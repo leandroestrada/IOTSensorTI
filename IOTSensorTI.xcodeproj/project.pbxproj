@@ -15,6 +15,7 @@
 		3020AE432497135100C641A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3020AE412497135100C641A0 /* LaunchScreen.storyboard */; };
 		3020AE4B2497157000C641A0 /* UserInputsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3020AE4A2497157000C641A0 /* UserInputsViewController.swift */; };
 		3020AE4D2497159C00C641A0 /* SensorDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3020AE4C2497159C00C641A0 /* SensorDataViewController.swift */; };
+		3020AE4F24971A7D00C641A0 /* PeripheralsSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3020AE4E24971A7D00C641A0 /* PeripheralsSingleton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		3020AE442497135100C641A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3020AE4A2497157000C641A0 /* UserInputsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputsViewController.swift; sourceTree = "<group>"; };
 		3020AE4C2497159C00C641A0 /* SensorDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorDataViewController.swift; sourceTree = "<group>"; };
+		3020AE4E24971A7D00C641A0 /* PeripheralsSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripheralsSingleton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				3020AE362497134F00C641A0 /* AppDelegate.swift */,
 				3020AE4A2497157000C641A0 /* UserInputsViewController.swift */,
 				3020AE4C2497159C00C641A0 /* SensorDataViewController.swift */,
+				3020AE4E24971A7D00C641A0 /* PeripheralsSingleton.swift */,
 				3020AE382497134F00C641A0 /* SceneDelegate.swift */,
 				3020AE3A2497134F00C641A0 /* ViewController.swift */,
 				3020AE3C2497134F00C641A0 /* Main.storyboard */,
@@ -147,6 +150,7 @@
 				3020AE4D2497159C00C641A0 /* SensorDataViewController.swift in Sources */,
 				3020AE3B2497134F00C641A0 /* ViewController.swift in Sources */,
 				3020AE372497134F00C641A0 /* AppDelegate.swift in Sources */,
+				3020AE4F24971A7D00C641A0 /* PeripheralsSingleton.swift in Sources */,
 				3020AE4B2497157000C641A0 /* UserInputsViewController.swift in Sources */,
 				3020AE392497134F00C641A0 /* SceneDelegate.swift in Sources */,
 			);
