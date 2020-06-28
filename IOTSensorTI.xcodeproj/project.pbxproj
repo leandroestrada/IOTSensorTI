@@ -8,21 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		3020AE372497134F00C641A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3020AE362497134F00C641A0 /* AppDelegate.swift */; };
-		3020AE392497134F00C641A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3020AE382497134F00C641A0 /* SceneDelegate.swift */; };
-		3020AE3B2497134F00C641A0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3020AE3A2497134F00C641A0 /* ViewController.swift */; };
 		3020AE3E2497134F00C641A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3020AE3C2497134F00C641A0 /* Main.storyboard */; };
 		3020AE402497135100C641A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3020AE3F2497135100C641A0 /* Assets.xcassets */; };
 		3020AE432497135100C641A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3020AE412497135100C641A0 /* LaunchScreen.storyboard */; };
 		3020AE4B2497157000C641A0 /* UserInputsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3020AE4A2497157000C641A0 /* UserInputsViewController.swift */; };
 		3020AE4D2497159C00C641A0 /* SensorDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3020AE4C2497159C00C641A0 /* SensorDataViewController.swift */; };
 		3020AE4F24971A7D00C641A0 /* PeripheralsSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3020AE4E24971A7D00C641A0 /* PeripheralsSingleton.swift */; };
+		E0FF9D8F24A82C3F00C27360 /* NewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FF9D8E24A82C3F00C27360 /* NewViewController.swift */; };
+		E0FF9D9424A8300100C27360 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FF9D9324A8300100C27360 /* SceneDelegate.swift */; };
+		E0FF9D9624A8306E00C27360 /* Loud Train Horn Sound Effect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E0FF9D9524A8306E00C27360 /* Loud Train Horn Sound Effect.mp3 */; };
+		E0FF9D9824A8307400C27360 /* TRAIN Sound Effects - Steam Train Start and Whistle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E0FF9D9724A8307400C27360 /* TRAIN Sound Effects - Steam Train Start and Whistle.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3020AE332497134F00C641A0 /* IOTSensorTI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IOTSensorTI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3020AE362497134F00C641A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3020AE382497134F00C641A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		3020AE3A2497134F00C641A0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3020AE3D2497134F00C641A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3020AE3F2497135100C641A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3020AE422497135100C641A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -30,6 +30,11 @@
 		3020AE4A2497157000C641A0 /* UserInputsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputsViewController.swift; sourceTree = "<group>"; };
 		3020AE4C2497159C00C641A0 /* SensorDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorDataViewController.swift; sourceTree = "<group>"; };
 		3020AE4E24971A7D00C641A0 /* PeripheralsSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripheralsSingleton.swift; sourceTree = "<group>"; };
+		E0FF9D8E24A82C3F00C27360 /* NewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewViewController.swift; sourceTree = "<group>"; };
+		E0FF9D9024A82D9800C27360 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIButtonExtension.swift; path = ../../../coding/Swift/sensortag_ios/sensorTag/UIButtonExtension.swift; sourceTree = "<group>"; };
+		E0FF9D9324A8300100C27360 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		E0FF9D9524A8306E00C27360 /* Loud Train Horn Sound Effect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Loud Train Horn Sound Effect.mp3"; sourceTree = "<group>"; };
+		E0FF9D9724A8307400C27360 /* TRAIN Sound Effects - Steam Train Start and Whistle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "TRAIN Sound Effects - Steam Train Start and Whistle.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,12 +71,15 @@
 				3020AE4A2497157000C641A0 /* UserInputsViewController.swift */,
 				3020AE4C2497159C00C641A0 /* SensorDataViewController.swift */,
 				3020AE4E24971A7D00C641A0 /* PeripheralsSingleton.swift */,
-				3020AE382497134F00C641A0 /* SceneDelegate.swift */,
-				3020AE3A2497134F00C641A0 /* ViewController.swift */,
+				E0FF9D9024A82D9800C27360 /* UIButtonExtension.swift */,
+				E0FF9D9724A8307400C27360 /* TRAIN Sound Effects - Steam Train Start and Whistle.mp3 */,
+				E0FF9D9524A8306E00C27360 /* Loud Train Horn Sound Effect.mp3 */,
 				3020AE3C2497134F00C641A0 /* Main.storyboard */,
 				3020AE3F2497135100C641A0 /* Assets.xcassets */,
 				3020AE412497135100C641A0 /* LaunchScreen.storyboard */,
 				3020AE442497135100C641A0 /* Info.plist */,
+				E0FF9D8E24A82C3F00C27360 /* NewViewController.swift */,
+				E0FF9D9324A8300100C27360 /* SceneDelegate.swift */,
 			);
 			path = IOTSensorTI;
 			sourceTree = "<group>";
@@ -136,6 +144,8 @@
 			files = (
 				3020AE432497135100C641A0 /* LaunchScreen.storyboard in Resources */,
 				3020AE402497135100C641A0 /* Assets.xcassets in Resources */,
+				E0FF9D9624A8306E00C27360 /* Loud Train Horn Sound Effect.mp3 in Resources */,
+				E0FF9D9824A8307400C27360 /* TRAIN Sound Effects - Steam Train Start and Whistle.mp3 in Resources */,
 				3020AE3E2497134F00C641A0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -148,11 +158,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				3020AE4D2497159C00C641A0 /* SensorDataViewController.swift in Sources */,
-				3020AE3B2497134F00C641A0 /* ViewController.swift in Sources */,
+				E0FF9D8F24A82C3F00C27360 /* NewViewController.swift in Sources */,
 				3020AE372497134F00C641A0 /* AppDelegate.swift in Sources */,
 				3020AE4F24971A7D00C641A0 /* PeripheralsSingleton.swift in Sources */,
 				3020AE4B2497157000C641A0 /* UserInputsViewController.swift in Sources */,
-				3020AE392497134F00C641A0 /* SceneDelegate.swift in Sources */,
+				E0FF9D9424A8300100C27360 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,13 +309,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5F3426985K;
 				INFOPLIST_FILE = IOTSensorTI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.leandro.IOTSensorTI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -317,13 +328,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5F3426985K;
 				INFOPLIST_FILE = IOTSensorTI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.leandro.IOTSensorTI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

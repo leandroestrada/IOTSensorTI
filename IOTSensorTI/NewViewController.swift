@@ -1,20 +1,14 @@
-//
-//  SensorDataViewController.swift
-//  IOTSensorTI
-//
-//  Created by leandro de araujo estrada on 14/06/20.
-//  Copyright © 2020 leandro de araujo estrada. All rights reserved.
-//
-
-
 import UIKit
-import AVFoundation
-import Foundation
 import CoreBluetooth
+import Foundation
+import WatchConnectivity
+import AVFoundation
 
-class SensorDataViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate {
+
+class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate/* WCSessionDelegate*/ {
     
-    // MARK: - Outlets
+    // MARK - Outlets
+    
     
     @IBOutlet weak var luzLbl: UILabel!
     @IBOutlet weak var lblHum: UILabel!
@@ -32,8 +26,9 @@ class SensorDataViewController: UIViewController, CBCentralManagerDelegate, CBPe
     @IBOutlet weak var umidImg: UIImageView!
     @IBOutlet weak var tempImg: UIImageView!
     
-
-// MARK: - Variables
+    
+    
+    // MARK: - Variables
     
     let systemSoundIDVibrate: SystemSoundID = 4095
     var trainHorn: AVAudioPlayer = AVAudioPlayer()
@@ -52,7 +47,6 @@ class SensorDataViewController: UIViewController, CBCentralManagerDelegate, CBPe
     var pickerSelecionado: Double = 1.0
     var sensorPicker = UIPickerView()
     var sensores : [String] = ["sensor1", "sensor2", "sensor3"]
-    
     var centralManager: CBCentralManager!
     var myPeripheral: CBPeripheral!
     
@@ -81,24 +75,16 @@ class SensorDataViewController: UIViewController, CBCentralManagerDelegate, CBPe
     let charHumidityConfig = CBUUID.init(string: "F000AA22-0451-4000-B000-000000000000")
     let charLightConfig = CBUUID.init(string: "F000AA72-0451-4000-B000-000000000000")
     let charLightData = CBUUID.init(string: "F000AA71-0451-4000-B000-000000000000")
-
-    
-    
-    
-    
-    
-    private var phoneNumber: String = ""
-    private var sensorId: String = ""
-    private var lumosMinimumValue: Int = 10000
-    private var timeScan: Int = 1
-    
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
+        
+        
+        timePicker.delegate = self  //PICKER INTERVALO
+        timePicker.dataSource = self //PICKER INTERVALO
         //timeTextField.inputView = timePicker; formatter.formatOptions.insert(.withFractionalSeconds) //PICKER INTERVALO
         
         centralManager = CBCentralManager.init(delegate: self, queue: nil)
@@ -109,51 +95,6 @@ class SensorDataViewController: UIViewController, CBCentralManagerDelegate, CBPe
         catch{
             print(error)
         }
-        
-        // Do any additional setup after loading the view.
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        
-        if let userInputsVC = tabBarController?.viewControllers![1] as? UserInputsViewController {
-            self.phoneNumber = userInputsVC.numberToSend
-            if userInputsVC.sensorID != nil {
-                self.sensorId = userInputsVC.sensorID.text!
-                if myPeripheral != nil {
-                    centralManager.cancelPeripheralConnection(myPeripheral)
-                }
-                
-            }
-            if userInputsVC.luxometerSensor != nil && userInputsVC.timeScanSensor != nil {
-                self.lumosMinimumValue = Int(userInputsVC.luxometerSensor.value * 500)
-                self.timeScan = Int(userInputsVC.timeScanSensor.value * 10)
-            }
-        }
-    }
-    
-    func requestForSms(id: String, luxometer: Double, limit: Double, date: String, phoneNumber: String) {
-            let smsModel = ["message" : "Atenção: O sensor \(id) atingiu uma luminosidade de \(luxometer), abaixo do limite de \(limit) em \(date)", "binary" : false, "destinations" : [phoneNumber]] as [String : Any]
-            
-            var request = URLRequest(url: URL(string: "https://sandbox.api.sap.com/proximusenco/sms/outboundmessages")!)
-            
-            let jsonData = try? JSONSerialization.data(withJSONObject: smsModel, options: [])
-            request.httpBody = jsonData
-            request.httpMethod = "POST"
-            request.addValue("AFIuGXcXABO3I48KtPbeS2WGeGLz1bAk", forHTTPHeaderField: "APIKey")
-            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            
-            let session = URLSession.shared
-            let dataTask = session.dataTask(with: request, completionHandler: { (data, response, error) -> Void in
-                if (error != nil) {
-                    print(error)
-                } else {
-                    let httpResponse = response as? HTTPURLResponse
-                    print(httpResponse)
-                    self.phoneNumber = ""
-                }
-            })
-            dataTask.resume()
     }
     
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
@@ -164,9 +105,7 @@ class SensorDataViewController: UIViewController, CBCentralManagerDelegate, CBPe
     }
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        let sensorUuid = UUID(uuidString: sensorId)
-        //po peripheral.name peripheral.identifier
-        if peripheral.identifier == sensorUuid {
+        if peripheral.name?.contains("SensorTag") == true {
             print (peripheral.name ?? "no name")
             centralManager.stopScan()
             print (advertisementData)
@@ -174,7 +113,7 @@ class SensorDataViewController: UIViewController, CBCentralManagerDelegate, CBPe
             myPeripheral = peripheral
         }
     }
-
+    
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         central.scanForPeripherals(withServices: nil, options: nil)
     }
@@ -314,7 +253,7 @@ class SensorDataViewController: UIViewController, CBCentralManagerDelegate, CBPe
     
     func ISOStringFromDate(date: Date) -> String {
         let timezone = "UTC"
-        let locale = "pt_BR_POSIX"
+        let locale = "en_US_POSIX"
         let dateFormatter = DateFormatter()
         dateFormatter.locale = NSLocale(localeIdentifier: locale) as Locale!
         dateFormatter.timeZone = NSTimeZone(abbreviation: timezone) as! TimeZone
@@ -322,6 +261,7 @@ class SensorDataViewController: UIViewController, CBCentralManagerDelegate, CBPe
         
         return dateFormatter.string(from: date as Date)
     }
+    
     
     var sessao = URLSession(configuration: .default)
     var baseURL = URL(string: "https://iotmmss0009452156trial.hanatrial.ondemand.com/com.sap.iotservices.mms/v1/api/http/data/ceb113b9-a0f0-43b7-849e-af98797fc344")
@@ -332,11 +272,16 @@ class SensorDataViewController: UIViewController, CBCentralManagerDelegate, CBPe
     
     
     
-    func postando() {
+    @IBAction func postando(_ sender: UIButton)  {
+        //sender.pulsate()
+        let generator = UIImpactFeedbackGenerator(style: .medium)
+        generator.prepare()
+        generator.impactOccurred()
+        
         var mode: String = "sync"
         var messageType: String = "eda3550e5d06b2210acd"
         
-        var timestamp: String = ISOStringFromDate(date: Date())
+        var timestamp: String = "2018-08-14T18:43:15.799Z"
         var temperature: Double? = tempVal1
         
         var humidity: Double? = umidVal
@@ -569,13 +514,6 @@ class SensorDataViewController: UIViewController, CBCentralManagerDelegate, CBPe
             
             //var baseLuz = pickerLuz
             luminosidade = Double(luxVal)
-            if Int(luminosidade) < lumosMinimumValue && self.phoneNumber != "" {
-                let temporaryPhone =  self.phoneNumber
-                self.phoneNumber = ""
-                postando()
-                requestForSms(id: self.sensorId, luxometer: luminosidade, limit: Double(self.lumosMinimumValue), date: String(describing: Date().description(with: Locale.autoupdatingCurrent)), phoneNumber: temporaryPhone)
-                
-            }
             luzLbl.text = String(format: "%.2f", luxVal)
             if luxVal > 40 {
                 trainHorn.stop()
@@ -668,5 +606,28 @@ class SensorDataViewController: UIViewController, CBCentralManagerDelegate, CBPe
             zMagVal = Double(MagZ)
         }
         
+    }
+}
+///////////////////////////////PICKER INTERVALO///////////////////////////////
+extension ViewController : UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return time[row]
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return time.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        //        centralManager.cancelPeripheralConnection(myPeripheral)
+        //        timeTextField.text = time[row]
+        //        pickerSelecionado = Double(timeTextField.text!)!
+        //        print(pickerSelecionado)
+        //        self.view.endEditing(true)
     }
 }
